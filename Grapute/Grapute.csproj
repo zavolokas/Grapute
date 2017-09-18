@@ -41,22 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Jobs\DataIdentifyer.cs" />
-    <Compile Include="Jobs\IJob.cs" />
-    <Compile Include="Jobs\IJobDataStorage.cs" />
-    <Compile Include="Jobs\IJobRestorer.cs" />
-    <Compile Include="Jobs\IJobSaver.cs" />
-    <Compile Include="Jobs\Job%28TInput,TOutput%29.cs" />
-    <Compile Include="Jobs\JobData%28T%29.cs" />
-    <Compile Include="Jobs\JobProducerTask.cs" />
-    <Compile Include="Jobs\JobProducerTaskBase.cs" />
-    <Compile Include="Jobs\MergeJobProducerTask.cs" />
-    <Compile Include="Jobs\Serialization\IJobDeserializer.cs" />
-    <Compile Include="Jobs\Serialization\IJobSerializer.cs" />
-    <Compile Include="Jobs\Serialization\JobBinaryDeserializer.cs" />
-    <Compile Include="Jobs\Serialization\JobBinarySerializer.cs" />
-    <Compile Include="Jobs\Storage\FileSystemJobRestorer.cs" />
-    <Compile Include="Jobs\Storage\FileSystemJobSaver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\IOutputTasks%28T%29.cs" />
     <Compile Include="Tasks\ITask.cs" />

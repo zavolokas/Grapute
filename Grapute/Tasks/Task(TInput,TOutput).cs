@@ -3,8 +3,14 @@ using System.Collections.Generic;
 
 namespace Grapute
 {
-    public abstract class Task<TInput, TOutput> : TaskBase<TInput, TOutput>
+    public class Task<TInput, TOutput> : TaskBase<TInput, TOutput>
     {
+        private Func<TInput, TOutput[]> _func;
+        public Task(Func<TInput, TOutput[]> func)
+        {
+            _func = func;
+        }
+
         public override TaskBase<TInput, TOutput> Process()
         {
             if (IsFinished)
@@ -35,6 +41,17 @@ namespace Grapute
             return this;
         }
 
+
+
+        public Task<TOutput, TNewOutput> ForEachOutput<TNewOutput>(Func<TOutput, TNewOutput[]> processOutputsTask)
+        {
+            var t = new Task<TOutput,TNewOutput>(processOutputsTask);
+            t.SetInput(this);
+            return t;
+            //processOutputsTask.SetInput(this);
+            //return processOutputsTask;
+        }
+
         public Task<TOutput, TNewOutput> ForEachOutput<TNewOutput>(Task<TOutput, TNewOutput> processOutputsTask)
         {
             processOutputsTask.SetInput(this);
@@ -55,6 +72,9 @@ namespace Grapute
             return this;
         }
 
-        protected abstract TOutput[] Process(TInput input);
+        protected TOutput[] Process(TInput input)
+        {
+            return _func(input);
+        }
     }
 }
