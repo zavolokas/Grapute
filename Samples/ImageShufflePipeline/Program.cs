@@ -1,11 +1,19 @@
-﻿using System;
+﻿// The purpose of this sample is to demonstrate how to create a processing pipelines. 
+// It doesn't show a real case scenario, moreover it is overcomplicated for the sake of the sample code.
+//
+// In this sample a processing pipeline is created that repeats the following sequense of actions: 
+//  - creates a markups for each of the input bitmaps
+//  - based on the markup, extracts more bitmaps
+// After that it merges all the bitmaps to a single one.
+
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using Grapute;
 using Zavolokas.Utils.Processes;
 
-namespace ImageCropTasksTest
+namespace ImageShufflePipeline
 {
     class Program
     {
@@ -16,16 +24,14 @@ namespace ImageCropTasksTest
             // Keep the start node separately to provide an input
             var startNode = new Node<Bitmap, BitmapRegion>(functions.DivideIn4Regions);
 
-            // Create the processing pipeline that creates a markups for each 
-            // of the input bitmaps, based on this markup 
             var pipeline = startNode
-                .ForEachOutput(functions.ExtractToNewBitmap)
-                .ForEachOutput(functions.DivideIn4Regions)
-                .ForEachOutput(functions.ExtractToNewBitmap)
-                .ForEachOutput(functions.DivideIn4Regions)
-                .ForEachOutput(functions.ExtractToNewBitmap)
+                .ForEachOutput(x => new[] { functions.ExtractToNewBitmap(x) })
+                .ForEachOutput(x => functions.DivideIn4Regions(x))
+                .ForEachOutput(x => new[] { functions.ExtractToNewBitmap(x) })
+                .ForEachOutput(x => functions.DivideIn4Regions(x))
+                .ForEachOutput(x => new[] { functions.ExtractToNewBitmap(x) })
                 .CollectAllOutputsToOneArray()
-                .ForArray(functions.MergeRegions)
+                .ForArray(x => new[] { functions.MergeRegions(x) })
                 .ForEachOutput(x =>
                 {
                     FileInfo fi = new FileInfo(@"..\..\output.png");

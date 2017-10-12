@@ -1,8 +1,8 @@
 using System.Drawing;
 
-namespace ImageCropTasksTest
+namespace ImageShufflePipeline
 {
-    public class BitmapRegion
+    internal class BitmapRegion
     {
         public Bitmap Bmp;
         public int X;

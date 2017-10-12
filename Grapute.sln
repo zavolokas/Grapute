@@ -5,13 +5,11 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E3B6516D-59FA-4091-B4EF-DFD1D497A6E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageCropAndMergeTasks", "Samples\ImageCropTasksTest\ImageCropAndMergeTasks.csproj", "{A595D090-FAA9-4EC2-862B-E27EB017D9B7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainPipelinesSample", "Samples\ImageCropAndMergePipeline\ChainPipelinesSample.csproj", "{48A5A7BE-1B42-41A5-A8C0-4C28669CEE3B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grapute", "Grapute\Grapute.csproj", "{CBAEC1DE-B330-4DE2-9024-8DAFBFD7D39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Samples\ConsoleApp1\ConsoleApp1.csproj", "{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageShufflePipeline", "Samples\ImageShufflePipeline\ImageShufflePipeline.csproj", "{A595D090-FAA9-4EC2-862B-E27EB017D9B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleComputatuions", "Samples\SampleComputatuions\SampleComputatuions.csproj", "{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,18 +17,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48A5A7BE-1B42-41A5-A8C0-4C28669CEE3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48A5A7BE-1B42-41A5-A8C0-4C28669CEE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48A5A7BE-1B42-41A5-A8C0-4C28669CEE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48A5A7BE-1B42-41A5-A8C0-4C28669CEE3B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBAEC1DE-B330-4DE2-9024-8DAFBFD7D39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBAEC1DE-B330-4DE2-9024-8DAFBFD7D39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBAEC1DE-B330-4DE2-9024-8DAFBFD7D39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBAEC1DE-B330-4DE2-9024-8DAFBFD7D39B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A595D090-FAA9-4EC2-862B-E27EB017D9B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,7 +35,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A595D090-FAA9-4EC2-862B-E27EB017D9B7} = {E3B6516D-59FA-4091-B4EF-DFD1D497A6E7}
-		{48A5A7BE-1B42-41A5-A8C0-4C28669CEE3B} = {E3B6516D-59FA-4091-B4EF-DFD1D497A6E7}
 		{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F} = {E3B6516D-59FA-4091-B4EF-DFD1D497A6E7}
 	EndGlobalSection
 EndGlobal
