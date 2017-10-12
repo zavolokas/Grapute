@@ -4,7 +4,7 @@ using Grapute;
 
 namespace ChainPipelinesSample.Tasks
 {
-    public class MergeBitmapsToOne : Task<Bitmap[], Bitmap>
+    public class MergeBitmapsToOne : Node<Bitmap[], Bitmap>
     {
         private readonly int _cols;
 

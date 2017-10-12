@@ -4,7 +4,7 @@ using Grapute;
 
 namespace ChainPipelinesSample.Tasks
 {
-    public class ExtractMarkedBitmapPart : Task<BitmapWithMarkup, Bitmap>
+    public class ExtractMarkedBitmapPart : Node<BitmapWithMarkup, Bitmap>
     {
         protected override Bitmap[] Process(BitmapWithMarkup input)
         {

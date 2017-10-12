@@ -1,9 +1,8 @@
 ﻿
 namespace Grapute
 {
-    public interface ITask
+    public interface INode
     {
         void Process();
-        bool IsFinished { get; }
     }
 }

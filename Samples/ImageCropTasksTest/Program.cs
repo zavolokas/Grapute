@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
-using Zavolokas;
+using Grapute;
 using Zavolokas.Utils.Processes;
 
 namespace ImageCropTasksTest
@@ -10,22 +11,51 @@ namespace ImageCropTasksTest
     {
         static void Main(string[] args)
         {
-            string filePath = "..\\..\\..\\storage\\image.jpg";
+            var functions = new ImageProcessingFunctions();
 
-            var bitmap = new Bitmap(filePath);
+            // Keep the start node separately to provide an input
+            var startNode = new Node<Bitmap, BitmapRegion>(functions.DivideIn4Regions);
 
-            string outputFilePath = new MarkupBitmapTask(640, 512)
-                .SetInput(bitmap)
-                .ForEachOutput(new ExtractBitmapTask())
-                .ForEachOutput(new MarkupBitmapTask(160, 128))
-                .ForEachOutput(new ExtractBitmapTask())
+            // Create the processing pipeline that creates a markups for each 
+            // of the input bitmaps, based on this markup 
+            var pipeline = startNode
+                .ForEachOutput(functions.ExtractToNewBitmap)
+                .ForEachOutput(functions.DivideIn4Regions)
+                .ForEachOutput(functions.ExtractToNewBitmap)
+                .ForEachOutput(functions.DivideIn4Regions)
+                .ForEachOutput(functions.ExtractToNewBitmap)
                 .CollectAllOutputsToOneArray()
-                .ForArray(new MergeBitmapsToOneTask(3))
-                .ForEachOutput(new SaveImageTask())
-                .Process()
-                .Output[0];
+                .ForArray(functions.MergeRegions)
+                .ForEachOutput(x =>
+                {
+                    FileInfo fi = new FileInfo(@"..\..\output.png");
+                    x.Save(fi.FullName, ImageFormat.Png);
+                    return new[] { fi };
+                });
 
-            new FileInfo(outputFilePath).ShowFile();
+            var filePath = "..\\..\\..\\storage\\image1.jpg";
+            using (var bitmap = new Bitmap(filePath))
+            {
+                startNode.SetInput(bitmap);
+
+                pipeline
+                    .Process()
+                    .Output[0]
+                    .ShowFile();
+            }
+
+            Console.ReadLine();
+
+            filePath = "..\\..\\..\\storage\\image2.jpg";
+            using (var bitmap = new Bitmap(filePath))
+            {
+                startNode.SetInput(bitmap);
+
+                pipeline
+                    .Process()
+                    .Output[0]
+                    .ShowFile();
+            }
         }
     }
 }

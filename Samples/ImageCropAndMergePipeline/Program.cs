@@ -17,7 +17,7 @@ namespace ChainPipelinesSample
 
             string outputFilePath = pipeline.SetInput(bitmap)
                 .ForEachOutput(pipeline2)
-                .ForEachOutput(new SaveImageTask())
+                .ForEachOutput(new SaveImageNode())
                 .Process()
                 .Output[0];
 

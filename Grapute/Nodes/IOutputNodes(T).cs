@@ -1,6 +1,6 @@
 ﻿namespace Grapute
 {
-    public interface IOutputTasks<out T> : ITask
+    public interface IOutputNodes<out T> : INode
     {
         T[] Output { get; } 
     }

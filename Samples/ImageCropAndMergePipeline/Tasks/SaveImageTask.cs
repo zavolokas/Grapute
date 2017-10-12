@@ -6,7 +6,7 @@ using Grapute;
 
 namespace ChainPipelinesSample.Tasks
 {
-    public class SaveImageTask: Task<Bitmap, string>
+    public class SaveImageNode: Node<Bitmap, string>
     {
         protected override string[] Process(Bitmap input)
         {

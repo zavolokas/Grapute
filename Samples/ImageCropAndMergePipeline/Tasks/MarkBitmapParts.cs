@@ -4,7 +4,7 @@ using Grapute;
 
 namespace ChainPipelinesSample.Tasks
 {
-    public class MarkBitmapParts : Task<Bitmap, BitmapWithMarkup>
+    public class MarkBitmapParts : Node<Bitmap, BitmapWithMarkup>
     {
         private readonly int _width;
         private readonly int _height;

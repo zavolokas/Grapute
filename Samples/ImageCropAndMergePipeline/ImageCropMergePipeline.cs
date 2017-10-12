@@ -1,10 +1,11 @@
+using System;
 using System.Drawing;
 using ChainPipelinesSample.Tasks;
 using Grapute;
 
 namespace ChainPipelinesSample
 {
-    internal class ImageCropMergePipeline : Task<Bitmap, Bitmap>
+    internal class ImageCropMergePipeline : Node<Bitmap, Bitmap>
     {
         private readonly Size _size1;
         private readonly Size _size2;

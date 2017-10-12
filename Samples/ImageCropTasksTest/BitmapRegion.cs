@@ -2,7 +2,7 @@ using System.Drawing;
 
 namespace ImageCropTasksTest
 {
-    public class BitmapWithMarkup
+    public class BitmapRegion
     {
         public Bitmap Bmp;
         public int X;
