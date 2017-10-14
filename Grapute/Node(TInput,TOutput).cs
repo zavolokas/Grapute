@@ -37,6 +37,11 @@ namespace Grapute
             return this;
         }
 
+        protected TOutput[] Process(TInput input)
+        {
+            return _processFunction(input);
+        }
+
         public Node<TOutput, TNewOutput> ForEachOutput<TNewOutput>(Func<TOutput, TNewOutput[]> processOutputsFunc)
         {
             var node = new Node<TOutput,TNewOutput>(processOutputsFunc);
@@ -62,11 +67,6 @@ namespace Grapute
             Input = input;
             NodeInputProvider = null;
             return this;
-        }
-
-        protected TOutput[] Process(TInput input)
-        {
-            return _processFunction(input);
         }
     }
 }

@@ -34,12 +34,12 @@ namespace ImageShufflePipeline
                 .ForArray(x => new[] { functions.MergeRegions(x) })
                 .ForEachOutput(x =>
                 {
-                    FileInfo fi = new FileInfo(@"..\..\output.png");
+                    var fi = new FileInfo(@"..\..\output.png");
                     x.Save(fi.FullName, ImageFormat.Png);
                     return new[] { fi };
                 });
 
-            var filePath = "..\\..\\..\\storage\\image1.jpg";
+            var filePath = "..\\..\\..\\images\\image1.jpg";
             using (var bitmap = new Bitmap(filePath))
             {
                 startNode.SetInput(bitmap);
@@ -52,7 +52,7 @@ namespace ImageShufflePipeline
 
             Console.ReadLine();
 
-            filePath = "..\\..\\..\\storage\\image2.jpg";
+            filePath = "..\\..\\..\\images\\image2.jpg";
             using (var bitmap = new Bitmap(filePath))
             {
                 startNode.SetInput(bitmap);

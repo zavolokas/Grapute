@@ -42,11 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Nodes\IOutputNodes%28T%29.cs" />
-    <Compile Include="Nodes\INode.cs" />
-    <Compile Include="Nodes\MergeNode%28T%29.cs" />
-    <Compile Include="Nodes\Node%28TInput,TOutput%29.cs" />
-    <Compile Include="Nodes\NodeBase%28TInput,TOutput%29.cs" />
+    <Compile Include="IOutputNodes%28T%29.cs" />
+    <Compile Include="INode.cs" />
+    <Compile Include="MergeNode%28T%29.cs" />
+    <Compile Include="Node%28TInput,TOutput%29.cs" />
+    <Compile Include="NodeBase%28TInput,TOutput%29.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
