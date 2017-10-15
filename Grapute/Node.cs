@@ -1,5 +1,6 @@
-using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Grapute
 {
@@ -20,12 +21,20 @@ namespace Grapute
             }
 
             //process inputs and put result to the Output
-            var outputs = new List<TOutput>();
-            foreach (var input in inputs)
+
+            var outputs = new ConcurrentBag<TOutput>();
+            Parallel.ForEach(Partitioner.Create(0, inputs.Count), range =>
             {
-                var output = Process(input);
-                outputs.AddRange(output);
-            }
+                for (var i = range.Item1; i < range.Item2; i++)
+                {
+                    var output = Process(inputs[i]);
+                    for (var j = 0; j < output.Length; j++)
+                    {
+                        outputs.Add(output[j]);
+                    }
+                }
+            });
+
 
             Output = outputs.ToArray();
             return this;
