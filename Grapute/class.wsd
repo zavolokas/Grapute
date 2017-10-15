@@ -3,23 +3,16 @@
 title Relationships - Class Diagram
 
 
-interface IForEach<TInput,TOutput>{
-    +IForEach<T, P> ForEachOutput<P>(Func<T, P[]> func);
-    +IForEach<T, P> ForEachOutput<P>(CommonNode<T, P> node);
+class Node<TInput,TOutput>{
     +void SetInput(TInput input);
     +SinkNode<TOutput> CollectAllOutputsToOneArray();
     +INode<TOutput> Process();
+    +TOutput[] Process(TInput input)
 }
 
 interface INode<out T>{
     +void Process()
     +T[] Output
-}
-
-class SingleNode<TInput,TOutput>{
-    +INode<TOutput> Process()
-    +SinkNode<TOutput> CollectAllOutputsToOneArray()
-    +TOutput[] Process(TInput input)
 }
 
 class NodeBase<TInput,TOutput>{
@@ -30,37 +23,19 @@ class NodeBase<TInput,TOutput>{
     +INode<TOutput> Process()
 }
 
-class CommonNode<TInput,TOutput>{
-  +IForEach<T, P> ForEachOutput<P>(Func<T, P[]> func);
-  +IForEach<T, P> ForEachOutput<P>(CommonNode<T, P> node);
-  +void SetInput(TInput input)
-}
-
 class FuncNode<TInput, TOutput>{
     +FuncNode(Func<TInput, TOutput[]> processFunction)
     +TOutput[] Process(TInput input)
-    +IForEach<T, P> ForEachOutput<P>(Func<T, P[]> func);
-    +IForEach<T, P> ForEachOutput<P>(CommonNode<T, P> node);
-    +void SetInput(TInput input)
 }
 
 class SinkNode<T>{
     +INode<T[]> Process()
-    +IForEach<T[], P> ForArray<P>(CommonNode<T[], P> node)
-    +IForEach<T[], P> ForArray<P>(Func<T[], P[]> func)
 }
 
-
-
 INode <|-down NodeBase:Inheritance
-IForEach <|-down- CommonNode: Inheritance
-SingleNode <|-down- CommonNode: Inheritance
 NodeBase<|-down- SinkNode:Inheritance
-NodeBase <|-down- SingleNode: Inheritance
-
-
-IForEach <|-down- FuncNode: Inheritance
-SingleNode <|-down- FuncNode: Inheritance
+NodeBase <|-down- Node: Inheritance
+Node <|-down- FuncNode: Inheritance
 
 
 @enduml

@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace Grapute
 {
-    public abstract class SingleNode<TInput, TOutput> : NodeBase<TInput, TOutput>
+    public abstract class Node<TInput, TOutput> : NodeBase<TInput, TOutput>
     {
         public override INode<TOutput> Process()
         {
@@ -35,6 +36,12 @@ namespace Grapute
             var node = new SinkNode<TOutput>();
             node.SetInput(this);
             return node;
+        }
+
+        public void SetInput(TInput input)
+        {
+            Input = input;
+            NodeInputProvider = null;
         }
 
         protected abstract TOutput[] Process(TInput input);

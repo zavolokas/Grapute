@@ -5,11 +5,11 @@ using Grapute;
 namespace SampleComputatuions
 {
 
-    class SumNode : CommonNode<int, int>
+    class SumNode : Node<int, int>
     {
         protected override int[] Process(int input)
         {
-            return new[] { input + 0 };
+            return new[] { input + 3 };
         }
     }
     class Program
@@ -48,7 +48,7 @@ namespace SampleComputatuions
                     });
 
 
-            startNode.SetInput(5);
+            //startNode.SetInput(5);
 
             var result1 = pipeline.Process()
                 .Output[0];
