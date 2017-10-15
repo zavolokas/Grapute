@@ -5,7 +5,11 @@ namespace Grapute
 {
     public class Node<TInput, TOutput> : NodeBase<TInput, TOutput>
     {
-        private readonly Func<TInput, TOutput[]> _processFunction;
+        private readonly Func<TInput, TOutput[]> _processFunction = null;
+
+        public Node()
+        { }
+
         public Node(Func<TInput, TOutput[]> processFunction)
         {
             _processFunction = processFunction;
@@ -37,7 +41,7 @@ namespace Grapute
             return this;
         }
 
-        protected TOutput[] Process(TInput input)
+        protected virtual TOutput[] Process(TInput input)
         {
             return _processFunction(input);
         }
