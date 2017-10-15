@@ -30,9 +30,9 @@ namespace Grapute
             return this;
         }
 
-        public MergeNode<TOutput> CollectAllOutputsToOneArray()
+        public SinkNode<TOutput> CollectAllOutputsToOneArray()
         {
-            var node = new MergeNode<TOutput>();
+            var node = new SinkNode<TOutput>();
             node.SetInput(this);
             return node;
         }

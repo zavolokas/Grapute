@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Grapute
 {
-    public class MergeNode<T> : NodeBase<T, T[]>
+    public class SinkNode<T> : NodeBase<T, T[]>
     {
         public override INode<T[]> Process()
         {

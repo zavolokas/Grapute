@@ -8,7 +8,7 @@ namespace Grapute
         IForEach<TOutput, TNewOutput> ForEachOutput<TNewOutput>(CommonNode<TOutput, TNewOutput> processOutputsNode);
 
         void SetInput(TInput input);
-        MergeNode<TOutput> CollectAllOutputsToOneArray();
+        SinkNode<TOutput> CollectAllOutputsToOneArray();
 
         INode<TOutput> Process();
     }

@@ -7,7 +7,7 @@ interface IForEach<TInput,TOutput>{
     +IForEach<T, P> ForEachOutput<P>(Func<T, P[]> func);
     +IForEach<T, P> ForEachOutput<P>(CommonNode<T, P> node);
     +void SetInput(TInput input);
-    +MergeNode<TOutput> CollectAllOutputsToOneArray();
+    +SinkNode<TOutput> CollectAllOutputsToOneArray();
     +INode<TOutput> Process();
 }
 
@@ -18,7 +18,7 @@ interface INode<out T>{
 
 class SingleNode<TInput,TOutput>{
     +INode<TOutput> Process()
-    +MergeNode<TOutput> CollectAllOutputsToOneArray()
+    +SinkNode<TOutput> CollectAllOutputsToOneArray()
     +TOutput[] Process(TInput input)
 }
 
@@ -44,7 +44,7 @@ class FuncNode<TInput, TOutput>{
     +void SetInput(TInput input)
 }
 
-class MergeNode<T>{
+class SinkNode<T>{
     +INode<T[]> Process()
     +IForEach<T[], P> ForArray<P>(CommonNode<T[], P> node)
     +IForEach<T[], P> ForArray<P>(Func<T[], P[]> func)
@@ -55,7 +55,7 @@ class MergeNode<T>{
 INode <|-down NodeBase:Inheritance
 IForEach <|-down- CommonNode: Inheritance
 SingleNode <|-down- CommonNode: Inheritance
-NodeBase<|-down- MergeNode:Inheritance
+NodeBase<|-down- SinkNode:Inheritance
 NodeBase <|-down- SingleNode: Inheritance
 
 
