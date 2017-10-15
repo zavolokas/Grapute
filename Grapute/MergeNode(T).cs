@@ -5,7 +5,7 @@ namespace Grapute
 {
     public class MergeNode<T> : NodeBase<T, T[]>
     {
-        public override NodeBase<T, T[]> Process()
+        public override IOutputNodes<T[]> Process()
         {
             var inputs = new List<T>();
 
@@ -24,15 +24,15 @@ namespace Grapute
             return this;
         }
 
-        public Node<T[], TNewOutput> ForArray<TNewOutput>(Node<T[], TNewOutput> processOutputsNode)
+        public IForEach<T[], TNewOutput> ForArray<TNewOutput>(CommonNode<T[], TNewOutput> processOutputsNode)
         {
             processOutputsNode.SetInput(this);
             return processOutputsNode;
         }
 
-        public Node<T[], TNewOutput> ForArray<TNewOutput>(Func<T[], TNewOutput[]> processOutputsFunc)
+        public IForEach<T[], TNewOutput> ForArray<TNewOutput>(Func<T[], TNewOutput[]> processOutputsFunc)
         {
-            var node = new Node<T[], TNewOutput>(processOutputsFunc);
+            var node = new FuncNode<T[], TNewOutput>(processOutputsFunc);
             node.SetInput(this);
             return node;
         }

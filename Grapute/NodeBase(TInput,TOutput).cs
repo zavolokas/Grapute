@@ -22,6 +22,6 @@ namespace Grapute
             Input = default(TInput);
         }
 
-        public abstract NodeBase<TInput, TOutput> Process();
+        public abstract IOutputNodes<TOutput> Process();
     }
 }
