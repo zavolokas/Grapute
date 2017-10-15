@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageShufflePipeline", "Sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleComputatuions", "Samples\SampleComputatuions\SampleComputatuions.csproj", "{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grapute.Parallel", "Grapute.Parallel\Grapute.Parallel.csproj", "{E0100E65-7511-40D6-B7A3-E6FD7DDB6092}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{066CBA89-77EA-42A1-A1F7-94A2A65B1F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0100E65-7511-40D6-B7A3-E6FD7DDB6092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0100E65-7511-40D6-B7A3-E6FD7DDB6092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0100E65-7511-40D6-B7A3-E6FD7DDB6092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0100E65-7511-40D6-B7A3-E6FD7DDB6092}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
