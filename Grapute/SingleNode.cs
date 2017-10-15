@@ -4,7 +4,7 @@ namespace Grapute
 {
     public abstract class SingleNode<TInput, TOutput> : NodeBase<TInput, TOutput>
     {
-        public override IOutputNodes<TOutput> Process()
+        public override INode<TOutput> Process()
         {
             var inputs = new List<TInput>();
 

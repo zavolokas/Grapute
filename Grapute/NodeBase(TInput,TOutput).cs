@@ -1,8 +1,10 @@
+using System;
+
 namespace Grapute
 {
-    public abstract class NodeBase<TInput, TOutput> : INode, IOutputNodes<TOutput>
+    public abstract class NodeBase<TInput, TOutput> : INode<TOutput>
     {
-        protected IOutputNodes<TInput> NodeInputProvider;
+        protected INode<TInput> NodeInputProvider;
         protected TInput Input;
         public TOutput[] Output { get; protected set; }
 
@@ -11,17 +13,17 @@ namespace Grapute
             Output = null;
         }
 
-        void INode.Process()
+        void INode<TOutput>.Process()
         {
             Process();
         }
 
-        public void SetInput(IOutputNodes<TInput> nodeInputProvider)
+        public void SetInput(INode<TInput> nodeInputProvider)
         {
             NodeInputProvider = nodeInputProvider;
             Input = default(TInput);
         }
 
-        public abstract IOutputNodes<TOutput> Process();
+        public abstract INode<TOutput> Process();
     }
 }

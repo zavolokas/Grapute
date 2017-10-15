@@ -1,0 +1,66 @@
+@startuml
+
+title Relationships - Class Diagram
+
+
+interface IForEach<TInput,TOutput>{
+    +IForEach<T, P> ForEachOutput<P>(Func<T, P[]> func);
+    +IForEach<T, P> ForEachOutput<P>(CommonNode<T, P> node);
+    +void SetInput(TInput input);
+    +MergeNode<TOutput> CollectAllOutputsToOneArray();
+    +INode<TOutput> Process();
+}
+
+interface INode<out T>{
+    +void Process()
+    +T[] Output
+}
+
+class SingleNode<TInput,TOutput>{
+    +INode<TOutput> Process()
+    +MergeNode<TOutput> CollectAllOutputsToOneArray()
+    +TOutput[] Process(TInput input)
+}
+
+class NodeBase<TInput,TOutput>{
+    +TOutput[] Output
+    +void Reset()
+    +void Process()
+    +void SetInput(INode<TInput> node)
+    +INode<TOutput> Process()
+}
+
+class CommonNode<TInput,TOutput>{
+  +IForEach<T, P> ForEachOutput<P>(Func<T, P[]> func);
+  +IForEach<T, P> ForEachOutput<P>(CommonNode<T, P> node);
+  +void SetInput(TInput input)
+}
+
+class FuncNode<TInput, TOutput>{
+    +FuncNode(Func<TInput, TOutput[]> processFunction)
+    +TOutput[] Process(TInput input)
+    +IForEach<T, P> ForEachOutput<P>(Func<T, P[]> func);
+    +IForEach<T, P> ForEachOutput<P>(CommonNode<T, P> node);
+    +void SetInput(TInput input)
+}
+
+class MergeNode<T>{
+    +INode<T[]> Process()
+    +IForEach<T[], P> ForArray<P>(CommonNode<T[], P> node)
+    +IForEach<T[], P> ForArray<P>(Func<T[], P[]> func)
+}
+
+
+
+INode <|-down NodeBase:Inheritance
+IForEach <|-down- CommonNode: Inheritance
+SingleNode <|-down- CommonNode: Inheritance
+NodeBase<|-down- MergeNode:Inheritance
+NodeBase <|-down- SingleNode: Inheritance
+
+
+IForEach <|-down- FuncNode: Inheritance
+SingleNode <|-down- FuncNode: Inheritance
+
+
+@enduml

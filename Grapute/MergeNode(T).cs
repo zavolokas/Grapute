@@ -5,7 +5,7 @@ namespace Grapute
 {
     public class MergeNode<T> : NodeBase<T, T[]>
     {
-        public override IOutputNodes<T[]> Process()
+        public override INode<T[]> Process()
         {
             var inputs = new List<T>();
 

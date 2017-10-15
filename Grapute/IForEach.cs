@@ -10,6 +10,6 @@ namespace Grapute
         void SetInput(TInput input);
         MergeNode<TOutput> CollectAllOutputsToOneArray();
 
-        IOutputNodes<TOutput> Process();
+        INode<TOutput> Process();
     }
 }

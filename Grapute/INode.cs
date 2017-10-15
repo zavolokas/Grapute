@@ -1,8 +1,9 @@
 ﻿
 namespace Grapute
 {
-    public interface INode
+    public interface INode<out T>
     {
         void Process();
+        T[] Output { get; }
     }
 }

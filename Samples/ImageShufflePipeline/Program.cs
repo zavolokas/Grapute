@@ -22,7 +22,7 @@ namespace ImageShufflePipeline
             var functions = new ImageProcessingFunctions();
 
             // Keep the start node separately to provide an input
-            var startNode = new Node<Bitmap, BitmapRegion>(functions.DivideIn4Regions);
+            var startNode = new FuncNode<Bitmap, BitmapRegion>(functions.DivideIn4Regions);
 
             var pipeline = startNode
                 .ForEachOutput(x => new[] { functions.ExtractToNewBitmap(x) })
