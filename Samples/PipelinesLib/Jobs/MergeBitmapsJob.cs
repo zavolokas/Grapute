@@ -1,6 +1,6 @@
 using System.Drawing;
 using System.Linq;
-using Zavolokas.ParallelComputing.Jobs;
+using Grapute.Jobs;
 
 namespace PipelinesLib.Jobs
 {

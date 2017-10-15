@@ -56,6 +56,16 @@
     <Compile Include="Tasks\ExtractBitmapTask.cs" />
     <Compile Include="Tasks\MergeBitmapsToOneTask.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Grapute.Parallel\Grapute.Parallel.csproj">
+      <Project>{e0100e65-7511-40d6-b7a3-e6fd7ddb6092}</Project>
+      <Name>Grapute.Parallel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Grapute\Grapute.csproj">
+      <Project>{CBAEC1DE-B330-4DE2-9024-8DAFBFD7D39B}</Project>
+      <Name>Grapute</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

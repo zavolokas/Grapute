@@ -1,5 +1,4 @@
 using System.Drawing;
-using Zavolokas.ParallelComputing.Jobs;
 
 namespace PipelinesLib
 {

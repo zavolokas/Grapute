@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using Zavolokas.ParallelComputing.Jobs;
+using Grapute.Jobs;
 
 namespace PipelinesLib
 {

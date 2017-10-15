@@ -7,8 +7,7 @@ namespace Grapute.Jobs
     /// </summary>
     /// <typeparam name="TInput">The type of the input.</typeparam>
     /// <typeparam name="TOutput">The type of the output.</typeparam>
-    /// <seealso cref="Task{TInput,TOutput}" />
-    public abstract class JobProducerTaskBase<TInput, TOutput> : Task<TInput, TOutput>
+    public abstract class JobProducerTaskBase<TInput, TOutput> : Node<TInput, TOutput>
     {
         private readonly List<IJob> _jobs;
         private readonly IJobDataStorage _jobDataStorage;

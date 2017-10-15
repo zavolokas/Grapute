@@ -52,6 +52,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Grapute.Parallel\Grapute.Parallel.csproj">
+      <Project>{E0100E65-7511-40D6-B7A3-E6FD7DDB6092}</Project>
+      <Name>Grapute.Parallel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Grapute\Grapute.csproj">
+      <Project>{CBAEC1DE-B330-4DE2-9024-8DAFBFD7D39B}</Project>
+      <Name>Grapute</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PipelinesLib\PipelinesLib.csproj">
       <Project>{C420958A-95ED-4DF5-837E-DC83567929FD}</Project>
       <Name>PipelinesLib</Name>

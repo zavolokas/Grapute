@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Drawing;
+using Grapute;
+using Grapute.Jobs;
 using PipelinesLib.Tasks;
-using Zavolokas.ParallelComputing.Jobs;
-using Zavolokas.ParallelComputing.Tasks;
 
 namespace PipelinesLib.Pipelines
 {
@@ -10,14 +10,14 @@ namespace PipelinesLib.Pipelines
     /// The pipeline of tasks that splits and merges an image.
     /// </summary>
     /// <seealso cref="Task{T, TF}" />
-    internal class ImageCropMergePipeline : Task<JobData<Bitmap>, JobData<Bitmap>>
+    internal class ImageCropMergePipeline : Node<JobData<Bitmap>, JobData<Bitmap>>
     {
         private readonly Size _size1;
         private readonly Size _size2;
         private readonly int _cols;
         private readonly List<IJob> _jobs;
         private readonly IJobDataStorage _storage;
-        private  int _priority;
+        private int _priority;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageCropMergePipeline"/> class.
@@ -45,8 +45,10 @@ namespace PipelinesLib.Pipelines
         /// <returns></returns>
         protected override JobData<Bitmap>[] Process(JobData<Bitmap> bitmap)
         {
-            return new MarkupBitmapTask(_size1.Width, _size1.Height, _jobs, _storage, _priority++)
-                .SetInput(bitmap)
+            var start = new MarkupBitmapTask(_size1.Width, _size1.Height, _jobs, _storage, _priority++);
+            start.SetInput(bitmap);
+
+            return start
                 .ForEachOutput(new ExtractBitmapTask(_jobs, _storage, _priority++))
                 .ForEachOutput(new MarkupBitmapTask(_size2.Width, _size2.Height, _jobs, _storage, _priority++))
                 .ForEachOutput(new ExtractBitmapTask(_jobs, _storage, _priority++))

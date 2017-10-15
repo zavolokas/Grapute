@@ -1,12 +1,12 @@
 using System.Drawing;
-using Zavolokas.ParallelComputing.Jobs;
+using Grapute.Jobs;
 
 namespace PipelinesLib.Jobs
 {
     /// <summary>
     /// The job that extracts a marked part of a bitmap to a new bitmap.
     /// </summary>
-    /// <seealso cref="PipelineCreator.Job{TInput, TOutput}" />
+    /// <seealso cref="Job{TInput,TOutput}" />
     public class ExtractMarkedBitmapPartJob : Job<BitmapWithMarkup, Bitmap>
     {
         /// <summary>

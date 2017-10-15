@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using Grapute.Jobs;
+using Grapute.Jobs.Storage;
 using PipelinesLib;
 using PipelinesLib.Pipelines;
-using Zavolokas.ParallelComputing.Jobs;
-using Zavolokas.ParallelComputing.Jobs.Storage;
 
 namespace PipelineCreator
 {
@@ -12,10 +12,10 @@ namespace PipelineCreator
     {
         static void Main(string[] args)
         {
-            const string basePath = "..\\..\\..\\storage";
+            const string basePath = "..\\..\\..\\images";
 
             // this is our input bitmap.
-            string filePath = Path.Combine(basePath, "image.jpg");
+            string filePath = Path.Combine(basePath, "image1.jpg");
             var bitmap = new Bitmap(filePath);
 
             // Input should be placed into the storage so 

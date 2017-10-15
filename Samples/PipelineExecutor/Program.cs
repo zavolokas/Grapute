@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using Grapute.Jobs;
+using Grapute.Jobs.Serialization;
+using Grapute.Jobs.Storage;
 using PipelinesLib;
-using Zavolokas.ParallelComputing.Jobs;
-using Zavolokas.ParallelComputing.Jobs.Serialization;
-using Zavolokas.ParallelComputing.Jobs.Storage;
 
 namespace PipelineExecutor
 {
@@ -12,7 +12,7 @@ namespace PipelineExecutor
     {
         static void Main(string[] args)
         {
-            const string basePath = "..\\..\\..\\storage";
+            const string basePath = "..\\..\\..\\images";
 
             IJobDataStorage dataStorage = new FileSystemJobDataStorage(basePath);
             IJobDeserializer jobDeserializer = new ImgProcJobBinaryDeserializer(dataStorage);

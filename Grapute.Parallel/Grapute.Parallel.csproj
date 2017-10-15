@@ -41,7 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataIdentifyer.cs" />
+    <Compile Include="IJob.cs" />
+    <Compile Include="IJobDataStorage.cs" />
+    <Compile Include="IJobRestorer.cs" />
+    <Compile Include="IJobSaver.cs" />
+    <Compile Include="Job%28TInput,TOutput%29.cs" />
+    <Compile Include="JobData%28T%29.cs" />
+    <Compile Include="JobProducerTask.cs" />
+    <Compile Include="JobProducerTaskBase.cs" />
+    <Compile Include="MergeJobProducerTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\IJobDeserializer.cs" />
+    <Compile Include="Serialization\IJobSerializer.cs" />
+    <Compile Include="Serialization\JobBinaryDeserializer.cs" />
+    <Compile Include="Serialization\JobBinarySerializer.cs" />
+    <Compile Include="Storage\FileSystemJobRestorer.cs" />
+    <Compile Include="Storage\FileSystemJobSaver.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Grapute\Grapute.csproj">

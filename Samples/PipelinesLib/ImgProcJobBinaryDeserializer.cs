@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
+using Grapute.Jobs;
+using Grapute.Jobs.Serialization;
 using PipelinesLib.Jobs;
-using Zavolokas.ParallelComputing.Jobs;
-using Zavolokas.ParallelComputing.Jobs.Serialization;
 
 namespace PipelinesLib
 {
