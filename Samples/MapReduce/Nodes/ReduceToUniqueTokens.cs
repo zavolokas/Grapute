@@ -4,7 +4,7 @@ using Grapute;
 
 namespace MapReduce
 {
-    internal class ReduceNode : Node<FileInfo, FileInfo>
+    internal class ReduceToUniqueTokens : Node<FileInfo, FileInfo>
     {
         protected override FileInfo[] Process(FileInfo fileInfo)
         {

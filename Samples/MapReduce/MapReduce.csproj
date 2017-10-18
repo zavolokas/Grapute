@@ -43,14 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Map1Node.cs" />
-    <Compile Include="MergeNode.cs" />
+    <Compile Include="Nodes\InitTermCount.cs" />
+    <Compile Include="Nodes\MergeSort.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reduce2Node.cs" />
-    <Compile Include="ReduceNode.cs" />
-    <Compile Include="SortNode.cs" />
-    <Compile Include="SplitNode.cs" />
+    <Compile Include="Nodes\ReduceToUniqueTokens2.cs" />
+    <Compile Include="Nodes\ReduceToUniqueTokens.cs" />
+    <Compile Include="Nodes\SortTokens.cs" />
+    <Compile Include="Nodes\SplitFilesIntoChunks.cs" />
     <Compile Include="Token.cs" />
     <Compile Include="TokenComparer.cs" />
   </ItemGroup>

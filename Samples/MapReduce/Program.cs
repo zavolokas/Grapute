@@ -4,9 +4,9 @@ using Grapute;
 
 namespace MapReduce
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var startNode = new FuncNode<string, FileInfo>(x =>
             {
@@ -28,13 +28,13 @@ namespace MapReduce
 
             startNode
                 .CollectAllOutputsToOneArray()
-                .ForArray(new SplitNode())
-                .ForEachOutput(new Map1Node())
-                .ForEachOutput(new SortNode())
-                .ForEachOutput(new ReduceNode())
+                .ForArray(new SplitFilesIntoChunks())
+                .ForEachOutput(new InitTermCount())
+                .ForEachOutput(new SortTokens())
+                .ForEachOutput(new ReduceToUniqueTokens())
                 .CollectAllOutputsToOneArray()
-                .ForArray(new MergeNode())
-                .ForEachOutput(new Reduce2Node())
+                .ForArray(new MergeSort())
+                .ForEachOutput(new ReduceToUniqueTokens2())
                 .Process();
         }
     }

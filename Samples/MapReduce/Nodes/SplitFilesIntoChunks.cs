@@ -5,8 +5,10 @@ using Grapute;
 
 namespace MapReduce
 {
-    class SplitNode: Node<FileInfo[], FileInfo>
+    internal class SplitFilesIntoChunks: Node<FileInfo[], FileInfo>
     {
+        private const int PartitionMaxSize = 100_000;
+
         private static string GenerateFileName(string dirName, FileInfo f, int fileIndex)
         {
             return Path.Combine(dirName, Path.GetFileNameWithoutExtension(f.Name) + $"_{fileIndex}.txt");
@@ -15,51 +17,50 @@ namespace MapReduce
         protected override FileInfo[] Process(FileInfo[] fileInfos)
         {
             // split file into many
-            var resultFileNames = new List<FileInfo>();
-            int partitionMaxSize = 100_000;
-            char[] buffer = new char[1];
+            var resultFiles = new List<FileInfo>();
+            var buffer = new char[1];
 
-            for (int i = 0; i < fileInfos.Length; i++)
+            for (var i = 0; i < fileInfos.Length; i++)
             {
                 var fileInfo = fileInfos[i];
-                int currentFileSize = 0;
-                int fileIndex = 0;
+                var currentFileSize = 0;
+                var fileIndex = 0;
 
-                string dirName = Path.Combine(fileInfo.DirectoryName, "mr");
-                string fileName = GenerateFileName(dirName, fileInfo, fileIndex);
+                var dirName = Path.Combine(fileInfo.DirectoryName, "mr");
+                var fileName = GenerateFileName(dirName, fileInfo, fileIndex);
 
                 var streamWriter = new StreamWriter(fileName);
-                resultFileNames.Add(new FileInfo(fileName));
+                resultFiles.Add(new FileInfo(fileName));
 
-                bool isLastPunctuation = false;
+                var isLastPunctuation = false;
 
                 using (var streamReader = fileInfo.OpenText())
                 {
                     while (!streamReader.EndOfStream)
                     {
                         streamReader.Read(buffer, 0, 1);
-                        char currentChar = buffer[0];
-                        bool isPunctuation = Char.IsPunctuation(currentChar) || Char.IsWhiteSpace(currentChar);
-                        if (Char.IsLetter(currentChar) || (isPunctuation && !isLastPunctuation))
+                        var currentChar = buffer[0];
+                        var isPunctuation = char.IsPunctuation(currentChar) || char.IsWhiteSpace(currentChar);
+                        if (char.IsLetter(currentChar) || (isPunctuation && !isLastPunctuation))
                         {
                             currentFileSize++;
                             isLastPunctuation = isPunctuation;
 
                             if (isPunctuation)
                                 currentChar = (char)13;
-                            else if (!Char.IsLower(currentChar))
-                                currentChar = Char.ToLower(currentChar);
+                            else if (!char.IsLower(currentChar))
+                                currentChar = char.ToLower(currentChar);
 
                             streamWriter.Write(new[] { currentChar }, 0, 1);
 
-                            if (currentFileSize > partitionMaxSize && isPunctuation)
+                            if (currentFileSize > PartitionMaxSize && isPunctuation)
                             {
                                 fileIndex++;
                                 fileName = GenerateFileName(dirName, fileInfo, fileIndex);
                                 streamWriter.Close();
                                 streamWriter.Dispose();
                                 streamWriter = new StreamWriter(fileName);
-                                resultFileNames.Add(new FileInfo(fileName));
+                                resultFiles.Add(new FileInfo(fileName));
                                 currentFileSize = 0;
                             }
                         }
@@ -69,7 +70,7 @@ namespace MapReduce
                 }
             }
 
-            return resultFileNames.ToArray();
+            return resultFiles.ToArray();
         }
     }
 }

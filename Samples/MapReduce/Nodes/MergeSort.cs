@@ -3,7 +3,7 @@ using Grapute;
 
 namespace MapReduce
 {
-    class MergeNode:Node<FileInfo[], FileInfo>
+    class MergeSort:Node<FileInfo[], FileInfo>
     {
         protected override FileInfo[] Process(FileInfo[] fileInfos)
         {
