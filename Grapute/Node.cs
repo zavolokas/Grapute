@@ -21,19 +21,25 @@ namespace Grapute
             }
 
             //process inputs and put result to the Output
-
-            var outputs = new ConcurrentBag<TOutput>();
-            Parallel.ForEach(Partitioner.Create(0, inputs.Count), range =>
+            var outputs = new List<TOutput>();
+            foreach (var input in inputs)
             {
-                for (var i = range.Item1; i < range.Item2; i++)
-                {
-                    var output = Process(inputs[i]);
-                    for (var j = 0; j < output.Length; j++)
-                    {
-                        outputs.Add(output[j]);
-                    }
-                }
-            });
+                var output = Process(input);
+                outputs.AddRange(output);
+            }
+
+            //var outputs = new ConcurrentBag<TOutput>();
+            //Parallel.ForEach(Partitioner.Create(0, inputs.Count), range =>
+            //{
+            //    for (var i = range.Item1; i < range.Item2; i++)
+            //    {
+            //        var output = Process(inputs[i]);
+            //        for (var j = 0; j < output.Length; j++)
+            //        {
+            //            outputs.Add(output[j]);
+            //        }
+            //    }
+            //});
 
 
             Output = outputs.ToArray();
