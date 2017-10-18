@@ -7,8 +7,6 @@ namespace MapReduce
         public string Term;
         public int Count;
         public string Doc;
-        public int NumContainingDocs;
-
 
         public static Token ParseToken(string tokenline)
         {
