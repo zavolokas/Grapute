@@ -1,6 +1,8 @@
 # Grapute
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
 
+> PM> Install-Package Grapute -Version 1.0.0
+
 The library helps to define a graph of computations or a pipeline by connecting computation `Nodes` to eachother, where an output of one node becomes an input for the next `Node`.
 
 `Node` always returns an array of results. Later these results can be either consumed one by one by another `Node` or all together by a `SinkNode`.
