@@ -6,7 +6,7 @@ steps:
   - name: build
     image: microsoft/dotnet:2.0-sdk
     commands:
-      - dotnet build Zavolokas.Grapute -c Release
+      - dotnet build Grapute -c Release
     when:
       event: [push]
 
@@ -16,9 +16,9 @@ steps:
       NUGETKEY:
         from_secret: NUGET_KEY
     commands:
-      - dotnet build Zavolokas.Grapute -c Release
-      - dotnet pack Zavolokas.Grapute -c Release -p:PackageVersion=2.0.0.$${DRONE_BUILD_NUMBER}
-      - dotnet nuget push Zavolokas.Grapute/bin/Release/Zavolokas.Grapute.2.0.0.$${DRONE_BUILD_NUMBER}.nupkg -s https://api.nuget.org/v3/index.json -k $${NUGETKEY}
+      - dotnet build Grapute -c Release
+      - dotnet pack Grapute -c Release -p:PackageVersion=2.0.0.$${DRONE_BUILD_NUMBER}
+      - dotnet nuget push Grapute/bin/Release/Grapute.2.0.0.$${DRONE_BUILD_NUMBER}.nupkg -s https://api.nuget.org/v3/index.json -k $${NUGETKEY}
     when:
       event: [push]
       branch: [master]
