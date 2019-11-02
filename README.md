@@ -1,6 +1,7 @@
 # Grapute
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
 [![Build Status](https://travis-ci.org/zavolokas/Grapute.svg?branch=master)](https://travis-ci.org/zavolokas/Grapute)
+[![Build Status](https://cloud.drone.io/api/badges/zavolokas/Grapute/status.svg)](https://cloud.drone.io/zavolokas/Grapute)
 
 > PM> Install-Package Grapute -Version 1.0.0
 
