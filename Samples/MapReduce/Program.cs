@@ -24,7 +24,7 @@ namespace MapReduce
                 return files;
             });
 
-            startNode.SetInput("..\\..\\docs");
+            startNode.SetInput("..\\..\\..\\docs");
 
             startNode
                 .CollectAllOutputsToOneArray()
